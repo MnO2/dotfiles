@@ -67,11 +67,5 @@ function pr() {
 
 alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
 
-export PROMPT="$PROMPT$(git-radar --zsh --fetch) "
-
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export JDK_18=`/usr/libexec/java_home -v 1.8`
-export JDK_17=`/usr/libexec/java_home -v 1.7`
-
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config

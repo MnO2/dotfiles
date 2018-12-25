@@ -234,13 +234,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-
-if has('nvim') " This way you can also put it in your vim config file
-  call remote#host#Register('fibonacci', "*", rpcstart('/Users/mno2/Develop/haskell/nvim-hs-emoji/nvim-hs-devel.sh'))
-  let haskellChannel = remote#host#Require('fibonacci')
-
-  if haskellChannel < 1
-    echom 'Failure to initialize the haskell channel for remote procedure calls'
-    cq!
-  endif
-endif
