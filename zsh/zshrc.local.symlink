@@ -1,0 +1,77 @@
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export EDITOR='nvim'
+export VISUAL=$EDITOR
+
+PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin:/Users/mno2/Library/Android/sdk/platform-tools/:/Users/mno2/Library/Android/sdk/tools/:/Users/mno2/Sandbox/infer/infer/bin
+export PATH
+
+
+# make tmux launch in unicode mode
+alias tmux="tmux -u -2"
+alias vim="nvim"
+alias vi="nvim"
+
+export HISTFILE=~/.zsh_history 
+export HISTIGNORE=ls:history
+export HISTSIZE=10000
+export HISTTIMEFORMAT="%F %T "
+export SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt extended_history 
+setopt hist_ignore_dups 
+setopt hist_reduce_blanks  
+setopt inc_append_history   
+setopt ignore_eof
+
+alias bower='noglob bower'
+
+#export CC=clang
+#export CFLAGS="-std=c99 -Wall -Werror -fcolor-diagnostics" -I/usr/local/opt/openssl/include
+#export LDLIBS="-lm -lboost_system" -L/usr/local/opt/openssl/lib
+#export CXXFLAGS="-std=c++11 -stdlib=libc++ -I/opt/boxen/homebrew/include"
+
+#Nix Stores
+#export NIX_PATH=/nix/var/nix/profiles/per-user/mno2/channels/nixos
+#export NIX_PATH=/Users/mno2/Sandbox/nix
+
+# execute bin in the local npm repo
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+PATH="/Users/mno2/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/Users/mno2/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/mno2/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/mno2/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/mno2/perl5"; export PERL_MM_OPT;
+
+export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
+
+# ghc alias
+alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias ghci-sandbox="ghci -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias runhaskell-sandbox="runhaskell -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+
+source $HOME/.profile
+
+# source file for keys
+[[ -f $HOME/.zshrc.secret ]] && source $HOME/.zshrc.secret
+
+export LESS='-R'
+
+function pr() {
+    base=$1;
+    if [ "$1" == "" ]; then
+        base="develop"
+    fi
+    hub pull-request -b team:"$base" -h team:`git rev-parse --abbrev-ref HEAD`;
+}
+
+alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
+
+export PROMPT="$PROMPT$(git-radar --zsh --fetch) "
+
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JDK_18=`/usr/libexec/java_home -v 1.8`
+export JDK_17=`/usr/libexec/java_home -v 1.7`
+
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config

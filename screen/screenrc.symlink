@@ -1,0 +1,6 @@
+startup_message off
+termcapinfo xterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;bash\007'
+shelltitle '$ |bash'
+defhstatus "\005t"
+caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "

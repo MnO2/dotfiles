@@ -1,0 +1,98 @@
+[user]
+	name = Paul Meng
+	email = me@paulme.ng
+
+
+[alias]
+	browse       = !hub browse
+	w            = !hub browse
+	compare      = !hub compare
+	cb           = !git-cut-branch
+	sh           = !git-sh
+	grab         = !git-grab
+	thanks       = !git-thanks
+	track        = !git-track
+	ll           = log --pretty=oneline --abbrev-commit --max-count=15
+	wip          = !git add -u && git commit -m ...
+	wipc         = !date >> WIP && git add WIP && git commit -m ...
+	fp           = format-patch --stdout
+	ci           = commit
+	x            = checkout HEAD
+	bv           = !git branch --color -v | cut -c1-100
+	incoming     = !git-incoming
+	in           = !git-incoming
+	outgoing     = !git-outgoing
+	out          = !git-outgoing
+	s            = status -sb -uno --ignore-submodules=untracked
+	st           = status
+	sa           = status -sb --ignore-submodules=untracked
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[core]
+	filemode = true
+	logallrefupdates = true
+	whitespace = space-before-tab, trailing-space
+	editor = /usr/bin/vim
+	excludesfile = /Users/mno2/.gitignore_global
+
+[help]
+	browser = open
+
+[branch]
+	autosetupmerge = true
+
+[diff]
+	renames = copies
+	mnemonicprefix = true
+
+[push]
+	default = current
+
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = rtomayko@gmail.com
+
+[color]
+	ui = auto
+
+[color "diff"]
+	meta = blue bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow bold
+	remote = green bold
+	plain = red bold
+
+[color "status"]
+	added = yellow
+	changed = green bold
+	untracked = blue bold
+
+[hub]
+	http-clone = true
+
+[browser "gitscm"]
+	cmd = sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
+
+# vim: noexpandtab ts=4 sw=4 sts=0
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
