@@ -5,6 +5,21 @@ export VISUAL=$EDITOR
 PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin:/Users/mno2/Library/Android/sdk/platform-tools/:/Users/mno2/Library/Android/sdk/tools/:/Users/mno2/Sandbox/infer/infer/bin
 export PATH
 
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  PLATFORM="LINUX"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  PLATFORM="OSX"
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+  PLATFORM="CYGWIN"
+elif [[ "$OSTYPE" == "msys" ]]; then
+  PLATFORM="WINDOWS"
+elif [[ "$OSTYPE" == "win32" ]]; then
+  PLATFORM="WINDOWS"
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+  PLATFORM="BSD"
+else
+  PLATFROM="UNKNOWN"
+fi
 
 # make tmux launch in unicode mode
 alias tmux="tmux -u -2"
@@ -57,12 +72,43 @@ source $HOME/.profile
 
 export LESS='-R'
 
+function TBD() {
+  echo "To be done."
+}
+
 function pr() {
     base=$1;
     if [ "$1" == "" ]; then
         base="develop"
     fi
     hub pull-request -b team:"$base" -h team:`git rev-parse --abbrev-ref HEAD`;
+}
+
+function tlscert() {
+  domain=$1;
+  openssl s_client -showcerts -servername $domain -connect $domain:443
+}
+
+function listening() {
+  echo "This operation requires sudo."
+  if [[ "$PLATFORM" == "OSX" ]]; then
+    sudo lsof -i -n -P | grep TCP
+  elif [[ "$PLATFORM" == "LINUX" ]]; then
+    sudo netstat -ntlp
+  else
+    echo "Unsupported Platform"
+  fi
+}
+
+function find_and_replace() {
+  regex=$1;
+  if [[ "$PLATFORM" == "OSX" ]]; then
+    TBD;
+  elif [[ "$PLATFORM" == "LINUX" ]]; then
+    find ./ -type f -exec sed -i -e $regex {} \;
+  else
+    echo "Unsupported Platform"
+  fi
 }
 
 alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
