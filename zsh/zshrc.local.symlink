@@ -25,6 +25,9 @@ fi
 alias tmux="tmux -u -2"
 alias vim="nvim"
 alias vi="nvim"
+alias ls="exa"
+alias cat="bat"
+alias grep="rg"
 
 export HISTFILE=~/.zsh_history 
 export HISTIGNORE=ls:history
@@ -109,6 +112,46 @@ function find_and_replace() {
   else
     echo "Unsupported Platform"
   fi
+}
+
+function external_ip() {
+  curl ipinfo.io/ip
+}
+
+function open_port() {
+  sudo iptables -I INPUT -p tcp --dport $1 -j ACCEPT;
+}
+
+function close_port() {
+  sudo iptables -I INPUT -p tcp --dport $1 -j DROP;
+}
+
+function web_server() {
+  python -m SimpleHTTPServer $1
+}
+
+function now() {
+  date '+%Y-%m-%d %H:%M:%S'
+}
+
+function unix_now() {
+  date '+%s'
+}
+
+function docker_stats() {
+  docker stats --no-stream |sort -k8 -hr | more
+}
+
+function top_filesize() {
+  du -sh $1 | sort -hr
+}
+
+function ls_last_modified() {
+  ls -lht
+}
+
+function file_exists() {
+  find . -name $1
 }
 
 alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
