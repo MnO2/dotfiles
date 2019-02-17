@@ -156,5 +156,4 @@ function file_exists() {
 
 alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
 
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
