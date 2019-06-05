@@ -2,7 +2,8 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR='nvim'
 export VISUAL=$EDITOR
 
-PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin:/Users/mno2/Library/Android/sdk/platform-tools/:/Users/mno2/Library/Android/sdk/tools/:/Users/mno2/Sandbox/infer/infer/bin
+PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin:$HOME/Sandbox/phabricator/arcanist/bin
+
 export PATH
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -23,11 +24,32 @@ fi
 
 # make tmux launch in unicode mode
 alias tmux="tmux -u -2"
-alias vim="nvim"
-alias vi="nvim"
-alias ls="exa"
-alias cat="bat"
-alias grep="rg"
+
+if [ -x "$(command -v nvim)" ]; then
+  alias vim="nvim"
+  alias vi="nvim"
+fi
+
+if [ -x "$(command -v exa)" ]; then
+  alias ls="exa"
+fi
+
+if [ -x "$(command -v bat)" ]; then
+  alias cat="bat"
+fi
+
+if [ -x "$(command -v rg)" ]; then
+  alias grep="rg"
+fi
+
+if [ -x "$(command -v xv)" ]; then
+  alias xxd="xv"
+fi
+
+if [ -x "$(command -v dua)" ]; then
+  alias du="dua"
+fi
+
 
 export HISTFILE=~/.zsh_history 
 export HISTIGNORE=ls:history
@@ -60,6 +82,7 @@ PERL5LIB="/Users/mno2/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/mno2/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/mno2/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/mno2/perl5"; export PERL_MM_OPT;
+
 
 export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
 
