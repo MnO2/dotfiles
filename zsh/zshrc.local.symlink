@@ -95,6 +95,7 @@ source $HOME/.profile
 
 # source file for keys
 [[ -f $HOME/.zshrc.secret ]] && source $HOME/.zshrc.secret
+[[ -f $HOME/.zshrc.atwork ]] && source $HOME/.zshrc.atwork
 
 export LESS='-R'
 
