@@ -2,9 +2,16 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR='nvim'
 export VISUAL=$EDITOR
 
-PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin:$HOME/Sandbox/phabricator/arcanist/bin
+export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin
 
-export PATH
+if [ -x "$(command -v go)" ]; then
+  export PATH=$PATH:$(go env GOPATH)/bin
+  export GOPATH=$(go env GOPATH)
+fi
+
+if [ -x "$(command -v kubectl)" ]; then
+  export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   PLATFORM="LINUX"
@@ -50,6 +57,7 @@ if [ -x "$(command -v dua)" ]; then
   alias du="dua"
 fi
 
+alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
 
 export HISTFILE=~/.zsh_history 
 export HISTIGNORE=ls:history
@@ -177,7 +185,3 @@ function ls_last_modified() {
 function file_exists() {
   find . -name $1
 }
-
-alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
-
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
