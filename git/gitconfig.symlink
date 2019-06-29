@@ -27,6 +27,7 @@
 	st           = status
 	sa           = status -sb --ignore-submodules=untracked
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	dt = difftool
 
 [core]
 	filemode = true
@@ -44,6 +45,7 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
+	tool = vimdiff
 
 [push]
 	default = current
@@ -91,8 +93,10 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff\"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[difftool]
+	prompt = false
