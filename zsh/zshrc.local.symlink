@@ -57,6 +57,10 @@ if [ -x "$(command -v dua)" ]; then
   alias du="dua"
 fi
 
+if [ -x "$(command -v procs)" ]; then
+  alias ps="procs"
+fi
+
 alias postgres.server="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log "
 
 export HISTFILE=~/.zsh_history 
