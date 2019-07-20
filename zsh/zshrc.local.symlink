@@ -1,5 +1,9 @@
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export EDITOR='nvim'
+
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR='nvim'
+fi
+
 export VISUAL=$EDITOR
 export LC_ALL=en_US.UTF-8
 
