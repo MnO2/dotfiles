@@ -1,6 +1,7 @@
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR='nvim'
 export VISUAL=$EDITOR
+export LC_ALL=en_US.UTF-8
 
 export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin
 
@@ -76,15 +77,6 @@ setopt inc_append_history
 setopt ignore_eof
 
 alias bower='noglob bower'
-
-#export CC=clang
-#export CFLAGS="-std=c99 -Wall -Werror -fcolor-diagnostics" -I/usr/local/opt/openssl/include
-#export LDLIBS="-lm -lboost_system" -L/usr/local/opt/openssl/lib
-#export CXXFLAGS="-std=c++11 -stdlib=libc++ -I/opt/boxen/homebrew/include"
-
-#Nix Stores
-#export NIX_PATH=/nix/var/nix/profiles/per-user/mno2/channels/nixos
-#export NIX_PATH=/Users/mno2/Sandbox/nix
 
 # execute bin in the local npm repo
 alias npm-exec='PATH=$(npm bin):$PATH'
