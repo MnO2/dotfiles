@@ -185,3 +185,8 @@ function ls_last_modified() {
 function file_exists() {
   find . -name $1
 }
+
+function refresh_ssh_agent() {
+  eval `ssh-agent -s`
+  ssh-add
+}
