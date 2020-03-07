@@ -57,8 +57,6 @@ brew "swiftlint"
 brew "sysdig"
 brew "the_silver_searcher"
 brew "tree"
-brew "vim", link: false
-brew "w3m", link: false
 brew "wget"
 brew "zlib"
 brew "zsh"
