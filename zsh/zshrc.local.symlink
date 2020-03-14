@@ -8,6 +8,7 @@ export VISUAL=$EDITOR
 export LC_ALL=en_US.UTF-8
 
 export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cabal/bin
+export NAVI_PATH=$NAVI_PATH:$HOME/.cheats
 
 if [ -x "$(command -v go)" ]; then
   export PATH=$PATH:$(go env GOPATH)/bin

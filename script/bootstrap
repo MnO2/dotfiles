@@ -114,8 +114,13 @@ install_dotfiles () {
   done
 }
 
+install_cheats() {
+  ln -sf $DOTFILES_ROOT/.cheats $HOME/.cheats
+}
+
 setup_gitconfig
 install_dotfiles
+install_cheats
 
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]
